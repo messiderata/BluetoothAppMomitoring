@@ -1,0 +1,63 @@
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardElevation="0dp"
+    android:backgroundTint="@color/white"> <!-- Optional: Removes outline shadow -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/linear_radius"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exit App"
+            android:layout_marginBottom="20dp"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Are you sure you want to exit the app?"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginBottom="20dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/yes_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/main_bg"
+                android:text="Yes"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/no_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/main_bg"
+                android:text="No"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

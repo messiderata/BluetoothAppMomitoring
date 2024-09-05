@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/Monitoring"
+            android:icon="@drawable/monitor_icon"
+            android:title="Monitoring"/>
+        <item
+            android:id="@+id/device"
+            android:icon="@drawable/device"
+            android:title="Device"/>
+        <item
+            android:id="@+id/exit"
+            android:icon="@drawable/exit_icon"
+            android:title="Exit"/>
+
+    </group>
+
+</menu>

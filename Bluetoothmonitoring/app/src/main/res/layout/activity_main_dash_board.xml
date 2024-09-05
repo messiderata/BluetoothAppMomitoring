@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/second_bg"
+    tools:openDrawer="start">
+
+        <!-- Main content container -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <!-- Menu bar -->
+                <LinearLayout
+                    android:id="@+id/menu_bar"
+                    android:background="@color/main_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:layout_alignParentTop="true"> <!-- Keep it at the top -->
+
+                        <ImageView
+                            android:id="@+id/menu_button"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/menu"
+                            app:tint="@color/white" />
+                </LinearLayout>
+
+                <!-- Fragment container, positioned below the menu bar -->
+                <FrameLayout
+                    android:id="@+id/fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/menu_bar"/> <!-- Place below the menu bar -->
+
+        </RelativeLayout>
+
+        <!-- Navigation drawer -->
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            app:menu="@menu/side_menu"
+            app:itemIconTint="@drawable/selector_nav_icon_text"
+            app:itemTextColor="@drawable/selector_nav_icon_text"
+            style="@style/CustomNavigationViewStyle"
+            app:headerLayout="@layout/nav_header"
+            android:fitsSystemWindows="true" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
