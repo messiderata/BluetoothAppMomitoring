@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:custom="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+
+
+    <!-- Nav bar-->
+    <LinearLayout
+        android:id="@+id/menu_bar"
+        android:background="@color/main_bg"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"> <!-- Keep it at the top -->
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            app:tint="@color/white"
+            android:src="@drawable/baseline_arrow_back_24"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/menu_bar"
+        android:id="@+id/holder"
+        android:layout_width="match_parent"
+        android:background="@color/main_bg"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Summary"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="25sp"/>
+
+        <!-- Horizontal layout for TextView and DonutProgress -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <!-- TextView on the left side -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Activity"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.506"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amount PPM"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.448"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.427" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="time"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.504"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
+                    app:layout_constraintVertical_bias="0.433" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- DonutProgress on the right side -->
+            <com.github.lzyzsd.circleprogress.DonutProgress
+                android:layout_gravity="center"
+                android:id="@+id/donut_progress"
+                android:layout_width="170dp"
+                android:layout_height="170dp"
+                custom:donut_finished_color="#6EA0E9"
+                custom:donut_finished_stroke_width="15dp"
+                custom:donut_inner_drawable="@drawable/ic_vector_star_black_48dp"
+                custom:donut_show_text="false"
+                custom:donut_unfinished_color="#f5f5f5"
+                custom:donut_unfinished_stroke_width="15dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/holder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="5dp"
+        android:background="@android:color/darker_gray"
+        android:layout_margin="15dp">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/bar_chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

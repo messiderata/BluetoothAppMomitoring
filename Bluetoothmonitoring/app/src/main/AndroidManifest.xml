@@ -7,12 +7,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" /> <!-- Optional feature declarations -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
     <uses-feature
         android:name="android.hardware.bluetooth"
-        android:required="true" /> <!-- <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" /> -->
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -22,19 +24,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BluetoothMonitoring"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".DeviceConnection"
+            android:name=".Activity.DataMonitoring"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.Monitoring"
             android:exported="false" />
         <activity
-            android:name=".MainDashBoard"
+            android:name=".Activity.BluetoothSetup"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.MainDashBoard"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

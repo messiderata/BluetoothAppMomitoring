@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "636704588651",
+    "project_id": "waterland-edffe",
+    "storage_bucket": "waterland-edffe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636704588651:android:6e7bb0f4f35a35f8b1822e",
+        "android_client_info": {
+          "package_name": "com.example.auth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUqeFnwrbk_ttgRkPZYDmpmHbYoIhukUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636704588651:android:2aaec25587046451b1822e",
+        "android_client_info": {
+          "package_name": "com.example.waterland"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUqeFnwrbk_ttgRkPZYDmpmHbYoIhukUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

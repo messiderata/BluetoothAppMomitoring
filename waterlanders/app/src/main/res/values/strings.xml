@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Waterland</string>
+    <string name="title_">Aly in</string>
+    <string name="login_">Login</string>
+    <string name="pass_">Password</string>
+    <string name="hint_login">Phone Number, Username or Email</string>
+    <string name="hint_pass">Password</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="sign_up">Don\'t have an account?</string>
+    <string name="underline_signup"><u>Sign Up</u></string>
+</resources>
