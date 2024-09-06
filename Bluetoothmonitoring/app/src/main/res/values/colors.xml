@@ -5,5 +5,9 @@
     <color name="main_bg">#3D45CB</color>
     <color name="second_bg">#EBF0FC</color>
     <color name="optional">#A2CA71</color>
+    <color name="OFF">#FF0000</color>
+    <color name="On">#00FF00</color>
+
+
 
 </resources>

@@ -111,7 +111,7 @@ public class MainDashBoard extends AppCompatActivity {
             public void onClick(View v) {
                 // Exit the app
                 finishAffinity();  // This will close all activities and exit the app
-                
+
             }
         });
 
