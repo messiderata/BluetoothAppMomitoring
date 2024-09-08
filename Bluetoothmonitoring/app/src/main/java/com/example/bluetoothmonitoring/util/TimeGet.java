@@ -11,7 +11,7 @@ public class TimeGet {
     // Method to get the current formatted time
     public String getCurrentTime() {
         LocalDateTime currentTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
         return currentTime.format(formatter);
     }
 
@@ -19,4 +19,6 @@ public class TimeGet {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return sdf.format(new Date());
     }
+
+
 }

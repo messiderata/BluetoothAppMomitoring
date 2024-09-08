@@ -189,7 +189,7 @@ public class MainDashBoard extends AppCompatActivity {
             // Check if the socket is connected before starting the listener
             if (bluetoothSocket.isConnected()) {
                 handler.post(() -> {
-                    statusTextView.setText("Connected to " + device.getName());
+                    statusTextView.setText("Connected to:\n " + device.getName());
                     // Start listening for data using BluetoothDataListener
                     BluetoothListener dataListener = new BluetoothListener(this, inputStream, statusTextView);
                     dataListener.startListening();

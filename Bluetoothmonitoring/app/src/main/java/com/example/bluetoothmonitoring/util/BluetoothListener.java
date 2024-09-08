@@ -51,8 +51,6 @@ public class BluetoothListener {
                             Intent intent = new Intent("BluetoothData");
                             intent.putExtra("data", message);
                             context.sendBroadcast(intent);
-
-
                         }
                     }
                 } catch (IOException e) {

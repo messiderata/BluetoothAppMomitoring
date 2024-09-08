@@ -7,7 +7,7 @@
     <color name="optional">#A2CA71</color>
     <color name="OFF">#FF0000</color>
     <color name="On">#00FF00</color>
-
+    <color name="notif_bg">#EFF0F3</color>
 
 
 </resources>

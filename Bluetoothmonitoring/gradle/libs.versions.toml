@@ -11,6 +11,8 @@ rxandroid = "2.0.1"
 rxjava = "2.0.8"
 circleprogress = "1.2.1"
 androidhart = "3.1.0"
+cardview = "1.0.0"  # or the latest version available
+
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -24,6 +26,8 @@ rxandroid = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxandroi
 rxjava = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxjava" }
 circleprogress = { module = "com.github.lzyzsd:circleprogress", version.ref = "circleprogress" }
 androidhart = {module = "com.github.PhilJay:MPAndroidChart", version.ref ="androidhart"}
+cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 

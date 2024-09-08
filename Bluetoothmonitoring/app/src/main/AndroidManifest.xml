@@ -30,12 +30,6 @@
             android:name=".Activity.DataMonitoring"
             android:exported="false" />
         <activity
-            android:name=".Activity.Monitoring"
-            android:exported="false" />
-        <activity
-            android:name=".Activity.BluetoothSetup"
-            android:exported="false" />
-        <activity
             android:name=".Activity.MainDashBoard"
             android:exported="true">
             <intent-filter>

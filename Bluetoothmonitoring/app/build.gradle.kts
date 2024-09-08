@@ -43,4 +43,5 @@ dependencies {
     implementation(libs.rxjava)
     implementation(libs.circleprogress)
     implementation(libs.androidhart)
+    implementation(libs.cardview)
 }
