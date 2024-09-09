@@ -23,9 +23,8 @@
         <item name="cornerSize">0dp</item>
     </style>
 
-    <!-- Splash screen theme -->
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/main_bg</item> <!-- Set background color or drawable -->
+        <item name="android:windowBackground">@color/main_bg</item>
     </style>
 
 

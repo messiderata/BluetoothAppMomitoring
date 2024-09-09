@@ -9,16 +9,23 @@ import java.util.Locale;
 public class TimeGet {
 
     // Method to get the current formatted time
+    // Ensure you're using 24-hour format in TimeGet
     public String getCurrentTime() {
-        LocalDateTime currentTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
-        return currentTime.format(formatter);
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());  // 24-hour format
+        return sdf.format(new Date());
     }
+
 
     public String getCurrentDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return sdf.format(new Date());
     }
 
+    // Method to get the current formatted time
+    public String getCurrentTimeFormatted() {
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm a");
+        return currentTime.format(formatter);
+    }
 
 }

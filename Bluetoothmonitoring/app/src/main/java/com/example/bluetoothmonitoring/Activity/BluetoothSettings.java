@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-public class MainDashBoard extends AppCompatActivity {
+public class BluetoothSettings extends AppCompatActivity {
 
     private static final int REQUEST_ENABLE_BT = 1;
     private static final int REQUEST_FINE_LOCATION = 2;
@@ -68,6 +68,8 @@ public class MainDashBoard extends AppCompatActivity {
         // Initialize views and cache them for later use
         enableBluetoothSwitch = findViewById(R.id.button_enable_bluetooth);
         CardView discoverDevicesButton = findViewById(R.id.button_discover_devices);
+        CardView dashboardButton = findViewById(R.id.dashboard);
+
         ListView devicesListView = findViewById(R.id.list_view_devices);
         statusTextView = findViewById(R.id.bluetooth_status_text);
         textViewStatus = findViewById(R.id.text_status);
@@ -81,6 +83,11 @@ public class MainDashBoard extends AppCompatActivity {
         } else {
             textViewStatus.setText("OFF");
         }
+        dashboardButton.setOnClickListener(v -> {
+            Intent intent = new Intent(BluetoothSettings.this, DataMonitoring.class);
+            startActivity(intent);
+        });
+
 
         // Initialize the custom adapter using your custom layout
         BluetoothDeviceAdapter adapter = new BluetoothDeviceAdapter(this, bluetoothDevices);
@@ -189,12 +196,12 @@ public class MainDashBoard extends AppCompatActivity {
             // Check if the socket is connected before starting the listener
             if (bluetoothSocket.isConnected()) {
                 handler.post(() -> {
-                    statusTextView.setText("Connected to:\n " + device.getName());
+                    statusTextView.setText("Connected to: " + device.getName());
                     // Start listening for data using BluetoothDataListener
                     BluetoothListener dataListener = new BluetoothListener(this, inputStream, statusTextView);
                     dataListener.startListening();
 
-                    Intent intent = new Intent(MainDashBoard.this, DataMonitoring.class);
+                    Intent intent = new Intent(BluetoothSettings.this, DataMonitoring.class);
                     startActivity(intent);
                 });
             }

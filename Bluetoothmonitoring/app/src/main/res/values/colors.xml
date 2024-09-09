@@ -8,6 +8,11 @@
     <color name="OFF">#FF0000</color>
     <color name="On">#00FF00</color>
     <color name="notif_bg">#EFF0F3</color>
+    <color name="green">#289416</color>
+    <color name="yellow">#D6C002</color>
+    <color name="red">#ffcc0000</color>
+
+
 
 
 </resources>
