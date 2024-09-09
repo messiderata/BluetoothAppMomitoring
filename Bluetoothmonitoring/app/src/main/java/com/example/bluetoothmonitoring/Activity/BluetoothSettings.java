@@ -178,7 +178,10 @@ public class BluetoothSettings extends AppCompatActivity {
         super.onDestroy();
         // Unregister Bluetooth state receiver
         unregisterReceiver(bluetoothReceiver);
+        // Stop the Bluetooth listener
+
     }
+
 
     @SuppressLint("MissingPermission")
     private void connectToDevice(BluetoothDevice device) {

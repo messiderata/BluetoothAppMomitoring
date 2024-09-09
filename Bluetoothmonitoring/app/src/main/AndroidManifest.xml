@@ -38,6 +38,8 @@
             android:name=".Activity.DataMonitoring"
             android:exported="false" />
 
+
+
         <activity
             android:name=".Activity.MainActivity"
             android:theme="@style/SplashTheme"

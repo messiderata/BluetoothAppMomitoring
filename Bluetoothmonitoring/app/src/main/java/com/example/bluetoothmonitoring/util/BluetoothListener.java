@@ -20,20 +20,19 @@ import java.io.InputStream;
 public class BluetoothListener {
     private static final String ACTION_BLUETOOTH_DATA = "BluetoothData";
     private static final String TAG = "BluetoothMonitoring";
-    private static final int REQUEST_BLUETOOTH_PERMISSIONS = 101;
     private final InputStream inputStream;
     private final Handler handler;
     private final TextView statusTextView;
-    private final DatabaseHelper databaseHelper; // Ensure correct class name is used
     private final Context context;
+    private boolean listening = true;
 
     public BluetoothListener(Context context, InputStream inputStream, TextView statusTextView) {
         this.inputStream = inputStream;
         this.handler = new Handler(Looper.getMainLooper());
         this.statusTextView = statusTextView;
-        this.databaseHelper = new DatabaseHelper(context); // Ensure correct class name
         this.context = context;
     }
+
 
     // Call this method when you have new data to broadcast
     public void onDataReceived(String data) {
@@ -42,41 +41,58 @@ public class BluetoothListener {
         context.sendBroadcast(intent);
     }
 
-    public void startListening() {
-        // Check Bluetooth permissions for Android 12 and above
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (ContextCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED ||
-                    ContextCompat.checkSelfPermission(context, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
-                if (context instanceof Activity) {
-                    ActivityCompat.requestPermissions((Activity) context,
-                            new String[]{Manifest.permission.BLUETOOTH_CONNECT, Manifest.permission.BLUETOOTH_SCAN},
-                            REQUEST_BLUETOOTH_PERMISSIONS);
-                }
-                return; // Exit if permissions are not granted
-            }
-        }
 
+    public void startListening() {
         new Thread(() -> {
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[1024];  // Buffer for incoming data
             int bytes;
-            while (true) {
+
+            while (listening) {
                 try {
-                    if (inputStream != null) {
-                        bytes = inputStream.read(buffer);
-                        if (bytes > 0) {
-                            String message = new String(buffer, 0, bytes).trim();
-                            Log.d(TAG, "Received: " + message);
-                            // Only broadcast if the message is valid
-                            if (!message.isEmpty()) {
-                                onDataReceived(message);
-                            }
-                        }
+                    // Check if the socket is closed or there is no data to read
+                    if (inputStream == null) {
+                        Log.e(TAG, "InputStream is null. Socket might be closed.");
+                        break;  // Exit the loop if the socket is closed
                     }
+
+                    // Blocking call to read data from the InputStream
+                    bytes = inputStream.read(buffer);
+
+                    // If the read returns -1, the socket is closed
+                    if (bytes == -1) {
+                        Log.e(TAG, "Bluetooth socket closed, stopping listener.");
+                        break;  // Exit the loop if the socket is closed
+                    }
+
+                    // Convert the byte array to string
+                    String data = new String(buffer, 0, bytes);
+                    Log.d(TAG, "Data received: " + data);
+
+                    // Broadcast the received data
+                    onDataReceived(data);
+
+                    // Update the UI with the received data
+                    handler.post(() -> statusTextView.setText("Received: " + data));
+
                 } catch (IOException e) {
                     Log.e(TAG, "Error reading from InputStream", e);
-                    break; // Stop listening when there's an error
+                    break;  // Exit the loop on IO error
                 }
             }
+
+            // Clean up and close the input stream
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                Log.e(TAG, "Error closing InputStream", e);
+            }
+
         }).start();
+    }
+
+    public void stopListening() {
+        listening = false;  // Stop the while loop
     }
 }

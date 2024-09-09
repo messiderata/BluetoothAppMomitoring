@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -74,20 +75,32 @@ public class DataMonitoring extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
 
         currentDate = timeGet.getCurrentDate();
-        registerReceiver(bluetoothDataReceiver, new IntentFilter(ACTION_BLUETOOTH_DATA));
 
-        startRealTimeUpdates(); // Restored
-        startGraphUpdates();    // Restored
+        // Register the receiver with the appropriate flag
+        IntentFilter filter = new IntentFilter(ACTION_BLUETOOTH_DATA);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // For Android 12 and above, use the flag to declare that the receiver is not exported
+            registerReceiver(bluetoothDataReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            // For older versions, register without the flag
+            registerReceiver(bluetoothDataReceiver, filter);
+        }
+
+        startRealTimeUpdates();
+        startGraphUpdates();
         startHourlyCheck();
     }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(bluetoothDataReceiver);
+        unregisterReceiver(bluetoothDataReceiver);  // Unregister the receiver
         timeHandler.removeCallbacksAndMessages(null);
         graphHandler.removeCallbacksAndMessages(null);
     }
+
 
     private void initializeUI() {
         ImageView backButton = findViewById(R.id.back_button);

@@ -24,7 +24,7 @@ public class TimeGet {
     // Method to get the current formatted time
     public String getCurrentTimeFormatted() {
         LocalDateTime currentTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm a");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
         return currentTime.format(formatter);
     }
 
